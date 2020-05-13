@@ -21,6 +21,7 @@ namespace Alexa_TargetHeartRate
         /// <returns></returns>
         public string FunctionHandler(string input, ILambdaContext context)
         {
+            string a = "aaa";
             return input?.ToUpper();
         }
     }
