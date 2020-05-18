@@ -1,4 +1,6 @@
-## Project Alexa Target Heart Rate
+## Project Alexa Target Heart Rate 
+
+## THIS PROJECT IS IN PROGRESS AND WILL BE DEPLOYED ON OR BEFORE FRIDAY 5/22/2020 :) 
 ---
 ### We are deployed on AWS!
 
