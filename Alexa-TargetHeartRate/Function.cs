@@ -17,9 +17,12 @@ using Alexa.NET;
 
 namespace Alexa_TargetHeartRate
 {
+    /// <summary>
+    /// Sample code for getting a space fact
+    /// </summary>
     public class Function
     {
-       
+              
         public List<FactResource> GetResources()
         {
             List<FactResource> resources = new List<FactResource>();
