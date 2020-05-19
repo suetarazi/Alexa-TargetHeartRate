@@ -59,11 +59,12 @@ namespace Alexa_TargetHeartRate
             {
                 log.LogLine($"Default LaunchRequest made: 'Alexa, calculate target heart rate");
                 innerResponse = new PlainTextOutputSpeech();
-                (innerResponse as PlainTextOutputSpeech).Text = CalculateHeartRate(resource, true);
+               // (innerResponse as PlainTextOutputSpeech).Text = CalculateHeartRate(resource, age);
 
             }
             else if (input.GetRequestType() == typeof(IntentRequest))
             {
+
                 var intentRequest = (IntentRequest)input.Request;
 
                 switch (intentRequest.Intent.Name)
@@ -87,8 +88,12 @@ namespace Alexa_TargetHeartRate
                         break;
                     case "GetMyTargetHeartRate":
                         log.LogLine($"GetMyTargetHeartRateIntent sent: send target heart rate");
+                        // intent request, process the intent
+                        log.LogLine($"Intent Requested {intentRequest.Intent.Name}");
+                        // get the slots
+                        double age = Convert.ToDouble(intentRequest.Intent.Slots["Age"].Value);
                         innerResponse = new PlainTextOutputSpeech();
-                        (innerResponse as PlainTextOutputSpeech).Text = CalculateHeartRate(resource, false);
+                        (innerResponse as PlainTextOutputSpeech).Text = CalculateHeartRate(resource, age);
                         break;
                     //case "GetNewFactIntent":
                     //    log.LogLine($"GetFactIntent sent: send new fact");
@@ -116,10 +121,10 @@ namespace Alexa_TargetHeartRate
         /// <param name="resource"></param>
         /// <param name="withPreface"></param>
         /// <returns></returns>
-        public string CalculateHeartRate(HeartRateResource resource, bool withPreface)
+        public string CalculateHeartRate(HeartRateResource resource, double age)
         {
-            //Kavonen method   
-            int maxHeartRate = 220 - resource.Age;
+            //Karvonen method   
+            int maxHeartRate = 220 - Convert.ToInt32(age);
             string cardio = Math.Floor(maxHeartRate * 0.8).ToString();
             string fatBurn = Math.Floor(maxHeartRate * 0.6).ToString();
 
