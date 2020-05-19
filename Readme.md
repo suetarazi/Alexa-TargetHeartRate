@@ -55,7 +55,8 @@ dotnet build
 ```
 The dotnet tools will automatically restore any NuGet dependencies. 
 
-```
+---
+
 Unit testing is included in the Alexa-TargetHeartRate project using the xUnit test framework. Tests have been provided for each method in the application.
 
 ---
