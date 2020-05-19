@@ -46,7 +46,7 @@ Microsoft Visual Studio Community 2019 (Version 15.5.7)
 Clone this repository to your local machine.
 
 ```
-$ git clone https://github.com/YourRepo/YourProject.git
+$ git clone https://github.com/suetarazi/Alexa-TargetHeartRate.git
 ```
 Once downloaded, you can either use the dotnet CLI utilities or Visual Studio 2019 (or greater) to build the application. The solution file is located in the Alexa-TargetHeartRate directory at the root of the repository.
 ```
