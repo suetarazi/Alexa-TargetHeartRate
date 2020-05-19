@@ -20,29 +20,17 @@ namespace Alexa_TargetHeartRate
     public class Function
     {
        
-        public List<FactResource> GetResources()
+        public List<HeartRateResource> GetResources()
         {
-            List<FactResource> resources = new List<FactResource>();
-            FactResource enUSResource = new FactResource("en-US");
-            enUSResource.SkillName = "American Science Facts";
-            enUSResource.GetFactMessage = "Here's your science fact: ";
+            List<HeartRateResource> resources = new List<HeartRateResource>();
+            HeartRateResource enUSResource = new HeartRateResource("en-US");
+            enUSResource.SkillName = "Target Heart Rate";
+            enUSResource.PrefaceMessage = "Based on your age, your target heart rate for cardio is: ";
+            enUSResource.MiddleMessage = "and your target heart rate for fat burn is: ";
             enUSResource.HelpMessage = "You can say tell me a science fact, or, you can say exit... What can I help you with?";
             enUSResource.HelpReprompt = "You can say tell me a science fact to start";
             enUSResource.StopMessage = "Goodbye!";
-            enUSResource.Facts.Add("A year on Mercury is just 88 days long.");
-            enUSResource.Facts.Add("Despite being farther from the Sun, Venus experiences higher temperatures than Mercury.");
-            enUSResource.Facts.Add("Venus rotates counter-clockwise, possibly because of a collision in the past with an asteroid.");
-            enUSResource.Facts.Add("On Mars, the Sun appears about half the size as it does on Earth.");
-            enUSResource.Facts.Add("Earth is the only planet not named after a god.");
-            enUSResource.Facts.Add("Jupiter has the shortest day of all the planets.");
-            enUSResource.Facts.Add("The Milky Way galaxy will collide with the Andromeda Galaxy in about 5 billion years.");
-            enUSResource.Facts.Add("The Sun contains 99.86% of the mass in the Solar System.");
-            enUSResource.Facts.Add("The Sun is an almost perfect sphere.");
-            enUSResource.Facts.Add("A total solar eclipse can happen once every 1 to 2 years. This makes them a rare event.");
-            enUSResource.Facts.Add("Saturn radiates two and a half times more energy into space than it receives from the sun.");
-            enUSResource.Facts.Add("The temperature inside the Sun can reach 15 million degrees Celsius.");
-            enUSResource.Facts.Add("The Moon is moving approximately 3.8 cm away from our planet every year.");
-
+            
             resources.Add(enUSResource);
             return resources;
         }
@@ -69,9 +57,9 @@ namespace Alexa_TargetHeartRate
             // launches request
             if (input.GetRequestType() == typeof(LaunchRequest))
             {
-                log.LogLine($"Default LaunchRequest made: 'Alexa, open Science Facts");
+                log.LogLine($"Default LaunchRequest made: 'Alexa, calculate target heart rate");
                 innerResponse = new PlainTextOutputSpeech();
-                (innerResponse as PlainTextOutputSpeech).Text = emitNewFact(resource, true);
+                (innerResponse as PlainTextOutputSpeech).Text = CalculateHeartRate(resource, true);
 
             }
             else if (input.GetRequestType() == typeof(IntentRequest))
@@ -97,16 +85,16 @@ namespace Alexa_TargetHeartRate
                         innerResponse = new PlainTextOutputSpeech();
                         (innerResponse as PlainTextOutputSpeech).Text = resource.HelpMessage;
                         break;
-                    case "GetFactIntent":
-                        log.LogLine($"GetFactIntent sent: send new fact");
+                    case "GetMyTargetHeartRate":
+                        log.LogLine($"GetMyTargetHeartRateIntent sent: send target heart rate");
                         innerResponse = new PlainTextOutputSpeech();
-                        (innerResponse as PlainTextOutputSpeech).Text = emitNewFact(resource, false);
+                        (innerResponse as PlainTextOutputSpeech).Text = CalculateHeartRate(resource, false);
                         break;
-                    case "GetNewFactIntent":
-                        log.LogLine($"GetFactIntent sent: send new fact");
-                        innerResponse = new PlainTextOutputSpeech();
-                        (innerResponse as PlainTextOutputSpeech).Text = emitNewFact(resource, false);
-                        break;
+                    //case "GetNewFactIntent":
+                    //    log.LogLine($"GetFactIntent sent: send new fact");
+                    //    innerResponse = new PlainTextOutputSpeech();
+                    //    (innerResponse as PlainTextOutputSpeech).Text = emitNewFact(resource, false);
+                    //    break;
                     default:
                         log.LogLine($"Unknown intent: " + intentRequest.Intent.Name);
                         innerResponse = new PlainTextOutputSpeech();
@@ -122,28 +110,42 @@ namespace Alexa_TargetHeartRate
             return response;
         }
 
-        public string emitNewFact(FactResource resource, bool withPreface)
+        /// <summary>
+        /// Calculate target heart rates then concatenates output statement and calls output  
+        /// </summary>
+        /// <param name="resource"></param>
+        /// <param name="withPreface"></param>
+        /// <returns></returns>
+        public string CalculateHeartRate(HeartRateResource resource, bool withPreface)
         {
-            Random r = new Random();
-            if (withPreface)
-                return resource.GetFactMessage + resource.Facts[r.Next(resource.Facts.Count)];
-            return resource.Facts[r.Next(resource.Facts.Count)];
+            //Kavonen method   
+            int maxHeartRate = 220 - resource.Age;
+            string cardio = Math.Floor(maxHeartRate * 0.8).ToString();
+            string fatBurn = Math.Floor(maxHeartRate * 0.6).ToString();
+
+           // if (withPreface)
+                return resource.PrefaceMessage + cardio + resource.MiddleMessage + fatBurn; 
+             //  return resource.Facts[r.Next(resource.Facts.Count)];
         }
 
     }
 
-    public class FactResource
+    public class HeartRateResource
     {
-        public FactResource(string language)
+        public HeartRateResource(string language)
         {
             this.Language = language;
-            this.Facts = new List<string>();
+            
+            
         }
 
         public string Language { get; set; }
         public string SkillName { get; set; }
-        public List<string> Facts { get; set; }
-        public string GetFactMessage { get; set; }
+        public int Age { get; set; }
+
+        public string PrefaceMessage { get; set; }
+      
+        public string MiddleMessage { get; set; }
         public string HelpMessage { get; set; }
         public string HelpReprompt { get; set; }
         public string StopMessage { get; set; }
