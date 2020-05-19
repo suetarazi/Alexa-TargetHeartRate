@@ -19,14 +19,7 @@ namespace Alexa_TargetHeartRate
 {
     public class Function
     {
-        /// <summary>
-        /// A simple function that takes a string and does a ToUpper
-        /// </summary>
-        /// <param name="input"></param>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        ///     public class Function
-    
+       
         public List<FactResource> GetResources()
         {
             List<FactResource> resources = new List<FactResource>();
@@ -55,7 +48,7 @@ namespace Alexa_TargetHeartRate
         }
 
         /// <summary>
-        /// A simple function that takes a string and does a ToUpper
+        /// A simple function that takes in skill input and JSON context
         /// </summary>
         /// <param name="input"></param>
         /// <param name="context"></param>
@@ -73,6 +66,7 @@ namespace Alexa_TargetHeartRate
             var allResources = GetResources();
             var resource = allResources.FirstOrDefault();
 
+            // launches request
             if (input.GetRequestType() == typeof(LaunchRequest))
             {
                 log.LogLine($"Default LaunchRequest made: 'Alexa, open Science Facts");
