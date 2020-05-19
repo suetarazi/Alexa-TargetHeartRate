@@ -63,17 +63,21 @@ Unit testing is included in the Alexa-TargetHeartRate project using the xUnit te
 ## Usage
 ***[Provide some images of your app with brief description as title]***
 
-### Overview of Recent Posts
-![Overview of Recent Posts](https://via.placeholder.com/500x250)
+### Amazon Alexa Architecture
+![Amazon Alexa Architecture](https://i.imgur.com/U5gzq8H.png)
+referenced from: https://developer.amazon.com/en-US/alexa/alexa-skills-kit/start
 
-### Creating a Post
-![Post Creation](https://via.placeholder.com/500x250)
+### Utterances Alexa Will Recognize
+![Sample Utterances](https://i.imgur.com/X98HOWn.png)
 
-### Enriching a Post
-![Enriching Post](https://via.placeholder.com/500x250)
+### Validation Rule for Age
+![Validation Rule](https://i.imgur.com/o37mkBV.png)
 
-### Viewing Post Details
-![Details of Post](https://via.placeholder.com/500x250)
+### Endpoint
+![Endpoint](https://i.imgur.com/GJ7msJ8.png)
+
+### AWS Lambda
+![Endpoint](https://i.imgur.com/zE2e0DW.png)
 
 ---
 ## Data Flow (Frontend, Backend, REST API)
