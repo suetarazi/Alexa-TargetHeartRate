@@ -20,27 +20,97 @@ namespace Alexa_TargetHeartRate
 {
     public class Function
     {
-
+        /// <summary>
+        /// A simple function that takes in skill input and JSON context
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public SkillResponse FunctionHandler(SkillRequest input, ILambdaContext context)
         {
-            var logger = context.Logger;
-            logger.LogLine($"input request: { input.Request.ToString()}");
+            SkillResponse response = new SkillResponse();
+            response.Response = new ResponseBody();
+            response.Response.ShouldEndSession = false;
+            IOutputSpeech innerResponse = null;
+            var log = context.Logger;
+            log.LogLine($"Skill Request Object:");
+            log.LogLine(JsonConvert.SerializeObject(input));
 
+           //ar allResources = GetResources();
+           //ar resource = allResources.FirstOrDefault();
 
-            if(input.Request is LaunchRequest)
+            // launches request
+            if (input.GetRequestType() == typeof(LaunchRequest))
             {
-                logger.LogLine($"You win.");
-                return HandleLaunch((LaunchRequest)input.Request, logger);
-
-
-
+                log.LogLine($"Default LaunchRequest made: 'Alexa, open Target Heart Rate");
+                innerResponse = new PlainTextOutputSpeech();
+                (innerResponse as PlainTextOutputSpeech).Text = "Welcome to Target Heart Rate. Would you like me to calculate your target heart rate?";
+                response.Response.ShouldEndSession = false;
             }
-            else
+            else if (input.GetRequestType() == typeof(IntentRequest))
             {
-                logger.LogLine($"You lose!");
-                return null;
+                IntentRequest intentRequest = (IntentRequest)input.Request;
 
+                switch (intentRequest.Intent.Name)
+                {
+                    case "AMAZON.CancelIntent":
+                        log.LogLine($"AMAZON.CancelIntent: send StopMessage");
+                        innerResponse = new PlainTextOutputSpeech();
+                        (innerResponse as PlainTextOutputSpeech).Text = "StopMessage";
+                        response.Response.ShouldEndSession = true;
+                        break;
+                    case "AMAZON.StopIntent":
+                        log.LogLine($"AMAZON.StopIntent: send StopMessage");
+                        innerResponse = new PlainTextOutputSpeech();
+                        (innerResponse as PlainTextOutputSpeech).Text = "StopMessage";
+                        response.Response.ShouldEndSession = true;
+                        break;
+                    case "AMAZON.HelpIntent":
+                        log.LogLine($"AMAZON.HelpIntent: send HelpMessage");
+                        innerResponse = new PlainTextOutputSpeech();
+                        (innerResponse as PlainTextOutputSpeech).Text = "HelpMessage";
+                        break;
+                    case "GetMyTargetHeartRate":
+                        log.LogLine($"GetMyTargetHeartRate sent: send age to calculate method");
+                        innerResponse = new PlainTextOutputSpeech();
+                        (innerResponse as PlainTextOutputSpeech).Text = HandleIntent(intentRequest);
+                        break;
+                    default:
+                        log.LogLine($"Unknown intent: " + intentRequest.Intent.Name);
+                        innerResponse = new PlainTextOutputSpeech();
+                        (innerResponse as PlainTextOutputSpeech).Text = "HelpReprompt";
+                        break;
+                }
             }
+
+            log.LogLine($"user inputted: {innerResponse}");
+            response.Response.OutputSpeech = innerResponse;
+            response.Version = "1.0";
+            log.LogLine($"Skill Response Object...");
+            log.LogLine(JsonConvert.SerializeObject(response));
+            return response;
+        }
+
+        //public SkillResponse FunctionHandler(SkillRequest input, ILambdaContext context)
+        //{
+        //    var logger = context.Logger;
+        //    logger.LogLine($"input request: { input.Request.ToString()}");
+
+
+        //    if(input.Request is LaunchRequest)
+        //    {
+        //        logger.LogLine($"You win.");
+        //        return HandleLaunch((LaunchRequest)input.Request, logger);
+
+
+
+        //    }
+        //    else
+        //    {
+        //        logger.LogLine($"You lose!");
+        //        return null;
+
+        //    }
             //switch (input.Request)
             //{
             //    case Alexa.NET.Request.Type.LaunchRequest:
@@ -52,7 +122,7 @@ namespace Alexa_TargetHeartRate
             //}
 
            // throw new NotImplementedException("I don't know what you want dude!");
-        }
+        
     
         private SkillResponse HandleLaunch(LaunchRequest launchRequest, ILambdaLogger logger)
         {
@@ -73,19 +143,20 @@ namespace Alexa_TargetHeartRate
         /// <param name="intentRequest">object</param>
         /// <param name="logger">interface</param>
         /// <returns>object</returns>
-        private SkillResponse HandleIntent(IntentRequest intentRequest, ILambdaLogger logger)
+        private string HandleIntent(IntentRequest intentRequest)
         {
-            logger.LogLine($"IntentRequest {intentRequest.Intent.Name} made");
+            //, ILambdaLogger logger
+            //logger.LogLine($"IntentRequest {intentRequest.Intent.Name} made");
 
-            var responseSpeech = "";
+            var responseSpeech = "Ok, let me calculate that ";
 
             if (intentRequest.Intent.Slots.TryGetValue("age", out var ageSlot))
             {
                 if (!string.IsNullOrEmpty(ageSlot.Value))
                 {
 
-                    //responseSpeech += CalculateHeartRate(Convert.ToInt32(ageSlot.Value));
-                    responseSpeech += $" from {ageSlot.Value}";
+                    responseSpeech += CalculateHeartRate(Convert.ToInt32(ageSlot.Value));
+                    //responseSpeech += $" from {ageSlot.Value}";
                 }
             }
 
@@ -96,7 +167,7 @@ namespace Alexa_TargetHeartRate
                 Text = responseSpeech
             });
 
-            return response;
+            return responseSpeech;
         }
 
         /// <summary>
