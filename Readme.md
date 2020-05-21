@@ -130,6 +130,9 @@ Brody Rebne
 
 Harlen Lopez
 
+### About Us & Our Journey of Building This App
+[About Us & Project Presentation](https://docs.google.com/presentation/d/1vfLhkOYDcnnhweAwpU3HOC4k36HhsdMKPa9e0AZGz0M/edit#slide=id.g8703504b22_1_23)
+
 ---
 
 For more information on Markdown: https://www.markdownguide.org/cheat-sheet
