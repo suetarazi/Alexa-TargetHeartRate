@@ -24,16 +24,36 @@ namespace Alexa_TargetHeartRate
         public SkillResponse FunctionHandler(SkillRequest input, ILambdaContext context)
         {
             var logger = context.Logger;
+            logger.LogLine($"input request: { input.Request.ToString()}");
 
-            switch (input.Request)
+
+            if(input.Request is LaunchRequest)
             {
-                case LaunchRequest launchRequest: return HandleLaunch(launchRequest, logger);
-                    //case IntentRequest intentRequest: return HandleIntent(intentRequest, logger);
+                logger.LogLine($"You win.");
+                return HandleLaunch((LaunchRequest)input.Request, logger);
+
+
+
             }
+            else
+            {
+                logger.LogLine($"You lose!");
+                return null;
 
-            throw new NotImplementedException("I don't know what you want dude!");
+            }
+            //switch (input.Request)
+            //{
+            //    case Alexa.NET.Request.Type.LaunchRequest:
+            //        return "Wow! You look amazing for your age!";
+            //    case LaunchRequest launchRequest: return HandleLaunch(launchRequest, logger);
+
+
+            //    case IntentRequest intentRequest: return HandleIntent(intentRequest, logger);
+            //}
+
+           // throw new NotImplementedException("I don't know what you want dude!");
         }
-
+    
         private SkillResponse HandleLaunch(LaunchRequest launchRequest, ILambdaLogger logger)
         {
             logger.LogLine($"LaunchRequest made");
@@ -47,6 +67,52 @@ namespace Alexa_TargetHeartRate
         }
 
 
+        /// <summary>
+        /// Returns text speech of age to heart rate calculation after user gives age
+        /// </summary>
+        /// <param name="intentRequest">object</param>
+        /// <param name="logger">interface</param>
+        /// <returns>object</returns>
+        private SkillResponse HandleIntent(IntentRequest intentRequest, ILambdaLogger logger)
+        {
+            logger.LogLine($"IntentRequest {intentRequest.Intent.Name} made");
+
+            var responseSpeech = "";
+
+            if (intentRequest.Intent.Slots.TryGetValue("age", out var ageSlot))
+            {
+                if (!string.IsNullOrEmpty(ageSlot.Value))
+                {
+
+                    //responseSpeech += CalculateHeartRate(Convert.ToInt32(ageSlot.Value));
+                    responseSpeech += $" from {ageSlot.Value}";
+                }
+            }
+
+            responseSpeech += "!";
+
+            var response = ResponseBuilder.Tell(new PlainTextOutputSpeech()
+            {
+                Text = responseSpeech
+            });
+
+            return response;
+        }
+
+        /// <summary>
+        /// Calculates user's heart rate according to age
+        /// </summary>
+        /// <param name="age">int</param>
+        /// <returns>string</returns>
+        private string CalculateHeartRate(int age)
+        {
+            //Karvonen method   
+            int maxHeartRate = 220 - age;
+            string cardio = Math.Floor(maxHeartRate * 0.8).ToString();
+            string fatBurn = Math.Floor(maxHeartRate * 0.6).ToString();
+
+            return $"Based on your age, your target heart rate for cardio is: {cardio} and your target heart rate for fat burn is: {fatBurn}";
+        }
 
         /// <summary>
         /// A simple function that takes in skill input and JSON context
