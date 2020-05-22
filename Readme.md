@@ -65,6 +65,9 @@ referenced from: https://developer.amazon.com/en-US/alexa/alexa-skills-kit/start
 ### Utterances Alexa Will Recognize
 ![Sample Utterances](https://i.imgur.com/qTOe4sT.png)
 
+### Slot
+![Age](https://i.imgur.com/mWF5Ttg.png)
+
 ### Validation Rule for Age
 ![Validation Rule](https://i.imgur.com/etFbkNB.png)
 
