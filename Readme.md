@@ -72,7 +72,7 @@ referenced from: https://developer.amazon.com/en-US/alexa/alexa-skills-kit/start
 ![Validation Rule](https://i.imgur.com/etFbkNB.png)
 
 ### Endpoint
-![Endpoint](https://codefellows.slack.com/archives/G013FK2RPNH/p1590124803090500)
+![Endpoint](https://i.imgur.com/etFbkNB.png)
 
 ### AWS Lambda
 ![Endpoint](https://i.imgur.com/MTH1vw3.png)
