@@ -72,7 +72,7 @@ referenced from: https://developer.amazon.com/en-US/alexa/alexa-skills-kit/start
 ![Validation Rule](https://i.imgur.com/etFbkNB.png)
 
 ### Endpoint
-![Endpoint](https://i.imgur.com/etFbkNB.png)
+![Endpoint](https://i.imgur.com/CtuzYf2.png)
 
 ### AWS Lambda
 ![Endpoint](https://i.imgur.com/MTH1vw3.png)
@@ -92,9 +92,10 @@ referenced from: https://developer.amazon.com/en-US/alexa/alexa-skills-kit/start
 
 ---
 
-## Data Flow (Frontend, Backend, REST API)
-***[Add a clean and clear explanation of what the data flow is. Walk me through it.]***
-![Data Flow Diagram](/assets/img/Flowchart.png)
+## Data Flow 
+![Data Flow Diagram](https://i.imgur.com/QLQcI7N.png)
+
+![Data Flow Diagram](https://i.imgur.com/Mp6pNPp.png)
 
 ---
 ## Model Properties and Requirements
