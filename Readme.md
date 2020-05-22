@@ -1,7 +1,7 @@
 ## Project Alexa Target Heart Rate 
 
-## THIS PROJECT IS IN PROGRESS AND WILL BE DEPLOYED ON OR BEFORE FRIDAY 5/22/2020 :) 
 ---
+
 ### We are deployed on AWS!
 
 We submitted to deploy on AWS on 5/22/2020
@@ -72,7 +72,7 @@ referenced from: https://developer.amazon.com/en-US/alexa/alexa-skills-kit/start
 ![Validation Rule](https://i.imgur.com/etFbkNB.png)
 
 ### Endpoint
-![Endpoint](https://i.imgur.com/noEpjrb.png)
+![Endpoint](https://files.slack.com/files-pri/T039KG69K-F0143SNMFA7/untitled.png)
 
 ### AWS Lambda
 ![Endpoint](https://i.imgur.com/MTH1vw3.png)
@@ -99,28 +99,9 @@ referenced from: https://developer.amazon.com/en-US/alexa/alexa-skills-kit/start
 ---
 ## Model Properties and Requirements
 
-### Blog
-
 | Parameter | Type | Required |
 | --- | --- | --- |
-| ID  | int | YES |
-| Summary | string | YES |
-| Content | string | YES |
-| Tags | string(s) | NO |
-| Picture | img jpeg/png | NO |
-| Sentiment | float | NO |
-| Keywords | string(s) | NO |
-| Related Posts | links | NO |
-| Date | date/time object | YES |
-
-
-### User
-
-| Parameter | Type | Required |
-| --- | --- | --- |
-| ID  | int | YES |
-| Name/Author | string | YES |
-| Posts | list | YES |
+| Age  | Amazon.Number | YES |
 
 ---
 
