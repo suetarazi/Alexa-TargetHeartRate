@@ -124,7 +124,7 @@ Brody Rebne
 Harlen Lopez
 
 ### About Us & Our Journey Building This App
-[About Us & Project Presentation](https://docs.google.com/presentation/d/1vfLhkOYDcnnhweAwpU3HOC4k36HhsdMKPa9e0AZGz0M/edit#slide=id.g8703504b22_1_23)
+[About Us & Project Presentation](https://docs.google.com/presentation/d/1tS3eec274jsnpqQf_s9rr8RL5FLddIPlPPZriuv5nZU/edit#slide=id.g2accd1c413_3_31)
 
 ---
 
