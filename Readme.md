@@ -72,13 +72,13 @@ referenced from: https://developer.amazon.com/en-US/alexa/alexa-skills-kit/start
 ![Sample Utterances](https://i.imgur.com/qTOe4sT.png)
 
 ### Validation Rule for Age
-![Validation Rule]()
+![Validation Rule](https://i.imgur.com/etFbkNB.png)
 
 ### Endpoint
 ![Endpoint](https://i.imgur.com/noEpjrb.png)
 
 ### AWS Lambda
-![Endpoint]()
+![Endpoint](https://i.imgur.com/MTH1vw3.png)
 
 ### Interaction with Alexa
 ![App in use](https://i.imgur.com/1c3FtZA.png)
