@@ -51,19 +51,26 @@
             }
           ],
           "samples": [
-            "open target heart rate",
-            "get my target heart rate",
-            "whats my target heart rate",
-            "calculate my target heart rate",
-            "what is my target heart rate for a cardio workout",
-            "what is my target heart rate for a cardiovascular workout",
-            "what is my target heart rate for cardio exercise",
-            "what is my target heart rate for cardiovascular exercise",
-            "what is my target heart rate for an aerobic work out",
-            "what is my target heart rate for an anaerobic work out",
-            "what is my target heart rate for low impact exercise",
-            "what is my target heart rate for a fat burn workout",
-            "What is my target heart rate for a non-cardio workout"
+            "{age}"
+          ]
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": [
+            "okie dokie",
+            "sure",
+            "yup",
+            "yeah",
+            "yes"
+          ]
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": [
+            "no thank you",
+            "hell no",
+            "nope",
+            "no"
           ]
         }
       ],
@@ -140,9 +147,10 @@
             "value": "Please tell me your age so I can calculate your target heart rate"
           }
         ]
-    }
+      }
+    ]
   }
-  }
+}
 
 //{
 //  "interactionModel": {
@@ -192,125 +200,7 @@
 //              "name": "age",
 //              "type": "AMAZON.NUMBER",
 //              "samples": [
-//                "one hundred and ten",
-//                "one hundred ten",
-//                "one hundred and nine",
-//                "one hundred nine",
-//                "one hundred and eight",
-//                "one hundred eight",
-//                "one hundred and seven",
-//                "one hundred seven",
-//                "one hundred and six",
-//                "one hundred six",
-//                "one hundred and five",
-//                "one hundred five",
-//                "one hundred and four",
-//                "one hundred four",
-//                "one hundred three",
-//                "one hundred and three",
-//                "one hundred two",
-//                "one hundred and one",
-//                "one hundred one",
-//                "one hundred",
-//                "ninety nine",
-//                "ninety eight",
-//                "ninety seven",
-//                "ninety six",
-//                "ninety five",
-//                "ninety four",
-//                "ninety three",
-//                "ninety two",
-//                "ninety one",
-//                "ninety",
-//                "eighty nine",
-//                "eighty eight",
-//                "eighty seven",
-//                "eighty six",
-//                "eighty five",
-//                "eighty four",
-//                "eighty three",
-//                "eighty two",
-//                "eighty one",
-//                "one",
-//                "two ",
-//                "three ",
-//                "four",
-//                "five",
-//                "six",
-//                "seven",
-//                "eight",
-//                "nine",
-//                "ten",
-//                "eleven",
-//                "twelve",
-//                "thirteen",
-//                "fourteen",
-//                "fifteen",
-//                "sixteen",
-//                "seventeen",
-//                "eighteen",
-//                "nineteen",
-//                "eighty",
-//                "seventy nine",
-//                "seventy eight ",
-//                "seventy seven",
-//                "seventy six",
-//                "seventy five",
-//                "seventy four",
-//                "seventy three",
-//                "seventy two",
-//                "seventy one",
-//                "seventy",
-//                "sixty nine",
-//                "sixty eight",
-//                "sixty seven",
-//                "sixty six",
-//                "sixty five",
-//                "sixty four",
-//                "sixty three",
-//                "sixty two",
-//                "sixty one",
-//                "sixty",
-//                "fifty nine",
-//                "fifty eight",
-//                "fifty seven",
-//                "fifty six",
-//                "fifty five",
-//                "fifty four",
-//                "fifty three",
-//                "fifty two",
-//                "fifty one",
-//                "fifty",
-//                "forty nine",
-//                "forty eight",
-//                "forty seven",
-//                "forty six",
-//                "forty five",
-//                "forty four",
-//                "forty three",
-//                "forty two",
-//                "forty one",
-//                "forty",
-//                "thirty nine",
-//                "thirty eight",
-//                "thirty seven",
-//                "thirty six",
-//                "thirty five",
-//                "thirty four",
-//                "thirty three",
-//                "thirty two",
-//                "thirty one",
-//                "thirty",
-//                "twenty nine",
-//                "twenty eight",
-//                "twenty seven",
-//                "twenty six",
-//                "twenty five",
-//                "twenty four",
-//                "twenty three",
-//                "twenty two",
-//                "twenty one",
-//                "twenty"
+//                "{age}"
 //              ]
 //            }
 //          ],
@@ -404,30 +294,7 @@
 //            "value": "Please tell me your age so I can calculate your target heart rate"
 //          }
 //        ]
-//      }
-//    ]
-//  }
-//}
-
-
-//{
-//  "$schema": "http://json-schema.org/draft-04/schema",
-//  "title": "JSON Schema for my JSON file format",
-
-//  "type": "object",
-
-//  "properties": {
-//    "name": {
-//      "type": "string",
-//      "description": "This shows up in tooltips for the 'name' property."
-//    },
-//    "versions": {
-//      "type": "array",
-//      "description": "An array of version numbers.",
-//      "minItems": 1,
-//      "items": {
-//        "type": "number"
-//      }
 //    }
 //  }
-//}
+//  }
+
