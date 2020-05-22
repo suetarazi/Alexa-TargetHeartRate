@@ -4,12 +4,10 @@
 ---
 ### We are deployed on AWS!
 
-[project url here]
+We submitted to deploy on AWS on 5/22/2020
 
 ---
 ## Alexa Application
-
-***[Explain your app, should be at least a paragraph. What does it do? Why should I use? Sell your product!]***
 
 This Alexa application interacts with the user via voice and provides them their target heart rate or a cardio zone workout and a fat burn zone workout. The app responds to several utterances that open the app.
 
@@ -27,8 +25,8 @@ Microsoft Visual Studio Community 2019 (Version 15.5.7)
 - C#
 - ASP.Net Core
 - Entity Framework
-- AWS - Lambda for Visual Studio
-- xUnit
+- AWS 
+- Lambda for Visual Studio
 - Amazon Web Services
 - Amazon Developer Tools
 
@@ -57,10 +55,6 @@ The dotnet tools will automatically restore any NuGet dependencies.
 
 ---
 
-Unit testing is included in the Alexa-TargetHeartRate project using the xUnit test framework. Tests have been provided for each method in the application.
-
----
-
 ## Usage
 ***[Provide some images of your app with brief description as title]***
 
@@ -83,7 +77,18 @@ referenced from: https://developer.amazon.com/en-US/alexa/alexa-skills-kit/start
 ### Interaction with Alexa
 ![App in use](https://i.imgur.com/1c3FtZA.png)
 
+### Validation Rule with Alexa
+![Age Validation](https://i.imgur.com/gVSzbtM.png)
+
+![Age Validation](https://i.imgur.com/mb5jBg7.png)
+
+### Error Messaging with Alexa
+![Alexa Cancel](https://i.imgur.com/BxT1237.png)
+![Alexa Stop](https://i.imgur.com/0VHkCnq.png)
+![Alexa Help](https://i.imgur.com/hQjwzLM.png)
+
 ---
+
 ## Data Flow (Frontend, Backend, REST API)
 ***[Add a clean and clear explanation of what the data flow is. Walk me through it.]***
 ![Data Flow Diagram](/assets/img/Flowchart.png)
