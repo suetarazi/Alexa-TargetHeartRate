@@ -14,7 +14,7 @@
     "function-memory-size" : 128,
     "function-timeout"     : 20,
     "function-handler"     : "Alexa-TargetHeartRate::Alexa_TargetHeartRate.Function::FunctionHandler",
-    "function-name"        : "Alexa-Test",
+    "function-name"        : "TargetHeartRate",
     "function-role"        : "arn:aws:iam::312338966033:role/lambda_exec_Alexa-Test",
     "tracing-mode"         : "PassThrough",
     "environment-variables" : ""
