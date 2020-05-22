@@ -69,16 +69,19 @@ Unit testing is included in the Alexa-TargetHeartRate project using the xUnit te
 referenced from: https://developer.amazon.com/en-US/alexa/alexa-skills-kit/start
 
 ### Utterances Alexa Will Recognize
-![Sample Utterances](https://i.imgur.com/X98HOWn.png)
+![Sample Utterances](https://i.imgur.com/qTOe4sT.png)
 
 ### Validation Rule for Age
-![Validation Rule](https://i.imgur.com/o37mkBV.png)
+![Validation Rule]()
 
 ### Endpoint
-![Endpoint](https://i.imgur.com/GJ7msJ8.png)
+![Endpoint](https://i.imgur.com/noEpjrb.png)
 
 ### AWS Lambda
-![Endpoint](https://i.imgur.com/zE2e0DW.png)
+![Endpoint]()
+
+### Interaction with Alexa
+![App in use](https://i.imgur.com/1c3FtZA.png)
 
 ---
 ## Data Flow (Frontend, Backend, REST API)
